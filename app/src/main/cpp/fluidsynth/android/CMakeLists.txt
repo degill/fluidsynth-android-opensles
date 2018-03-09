@@ -33,6 +33,8 @@ set(fluidsynth_sources
         ${src_DIR}/utils/fluid_ringbuffer.c
         ${src_DIR}/utils/fluid_settings.c
         ${src_DIR}/bindings/fluid_filerenderer.c
+        ${src_DIR}/drivers/fluid_adriver.c
+        ${src_DIR}/drivers/fluid_opensles.c
         ${src_DIR}/utils/fluid_sys.c
         src/bindings/fluid_cmd.c
         src/drivers/fluid_adriver.c

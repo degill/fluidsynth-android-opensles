@@ -37,170 +37,185 @@ typedef struct _fluid_audriver_definition_t
 } fluid_audriver_definition_t;
 
 
-#if PULSE_SUPPORT
-fluid_audio_driver_t* new_fluid_pulse_audio_driver(fluid_settings_t* settings,
+//#if OPENSLES_SUPPORT
+fluid_audio_driver_t* new_fluid_opensles_audio_driver(fluid_settings_t* settings,
 						   fluid_synth_t* synth);
-fluid_audio_driver_t* new_fluid_pulse_audio_driver2(fluid_settings_t* settings,
-						    fluid_audio_func_t func, void* data);
-void delete_fluid_pulse_audio_driver(fluid_audio_driver_t* p);
-void fluid_pulse_audio_driver_settings(fluid_settings_t* settings);
-#endif
+int delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p);
+void fluid_opensles_audio_driver_settings(fluid_settings_t* settings);
+//#endif
 
-#if ALSA_SUPPORT
-fluid_audio_driver_t* new_fluid_alsa_audio_driver(fluid_settings_t* settings,
-						  fluid_synth_t* synth);
-fluid_audio_driver_t* new_fluid_alsa_audio_driver2(fluid_settings_t* settings,
-						 fluid_audio_func_t func, void* data);
-void delete_fluid_alsa_audio_driver(fluid_audio_driver_t* p);
-void fluid_alsa_audio_driver_settings(fluid_settings_t* settings);
-#endif
-
-#if OSS_SUPPORT
-fluid_audio_driver_t* new_fluid_oss_audio_driver(fluid_settings_t* settings,
-						 fluid_synth_t* synth);
-fluid_audio_driver_t* new_fluid_oss_audio_driver2(fluid_settings_t* settings,
-						fluid_audio_func_t func, void* data);
-void delete_fluid_oss_audio_driver(fluid_audio_driver_t* p);
-void fluid_oss_audio_driver_settings(fluid_settings_t* settings);
-#endif
-
-#if COREAUDIO_SUPPORT
-fluid_audio_driver_t* new_fluid_core_audio_driver(fluid_settings_t* settings,
-						  fluid_synth_t* synth);
-fluid_audio_driver_t* new_fluid_core_audio_driver2(fluid_settings_t* settings,
-						      fluid_audio_func_t func,
-						      void* data);
-void delete_fluid_core_audio_driver(fluid_audio_driver_t* p);
-void fluid_core_audio_driver_settings(fluid_settings_t* settings);
-#endif
-
-#if DSOUND_SUPPORT
-fluid_audio_driver_t* new_fluid_dsound_audio_driver(fluid_settings_t* settings,
-						  fluid_synth_t* synth);
-void delete_fluid_dsound_audio_driver(fluid_audio_driver_t* p);
-void fluid_dsound_audio_driver_settings(fluid_settings_t* settings);
-#endif
-
-#if PORTAUDIO_SUPPORT
-void fluid_portaudio_driver_settings (fluid_settings_t *settings);
-fluid_audio_driver_t* new_fluid_portaudio_driver(fluid_settings_t* settings,
-						 fluid_synth_t* synth);
-void delete_fluid_portaudio_driver(fluid_audio_driver_t* p);
-#endif
-
-#if JACK_SUPPORT
-fluid_audio_driver_t* new_fluid_jack_audio_driver(fluid_settings_t* settings, fluid_synth_t* synth);
-fluid_audio_driver_t* new_fluid_jack_audio_driver2(fluid_settings_t* settings,
-						 fluid_audio_func_t func, void* data);
-void delete_fluid_jack_audio_driver(fluid_audio_driver_t* p);
-void fluid_jack_audio_driver_settings(fluid_settings_t* settings);
-#endif
-
-#if SNDMAN_SUPPORT
-fluid_audio_driver_t* new_fluid_sndmgr_audio_driver(fluid_settings_t* settings,
-						  fluid_synth_t* synth);
-fluid_audio_driver_t* new_fluid_sndmgr_audio_driver2(fluid_settings_t* settings,
-						   fluid_audio_func_t func,
-						   void* data);
-void delete_fluid_sndmgr_audio_driver(fluid_audio_driver_t* p);
-#endif
-
-#if DART_SUPPORT
-fluid_audio_driver_t* new_fluid_dart_audio_driver(fluid_settings_t* settings,
-                          fluid_synth_t* synth);
-void delete_fluid_dart_audio_driver(fluid_audio_driver_t* p);
-void fluid_dart_audio_driver_settings(fluid_settings_t* settings);
-#endif
-
-#if AUFILE_SUPPORT
-fluid_audio_driver_t* new_fluid_file_audio_driver(fluid_settings_t* settings,
-						  fluid_synth_t* synth);
-void delete_fluid_file_audio_driver(fluid_audio_driver_t* p);
-#endif
+//#if PULSE_SUPPORT
+//fluid_audio_driver_t* new_fluid_pulse_audio_driver(fluid_settings_t* settings,
+//						   fluid_synth_t* synth);
+//fluid_audio_driver_t* new_fluid_pulse_audio_driver2(fluid_settings_t* settings,
+//						    fluid_audio_func_t func, void* data);
+//void delete_fluid_pulse_audio_driver(fluid_audio_driver_t* p);
+//void fluid_pulse_audio_driver_settings(fluid_settings_t* settings);
+//#endif
+//
+//#if ALSA_SUPPORT
+//fluid_audio_driver_t* new_fluid_alsa_audio_driver(fluid_settings_t* settings,
+//						  fluid_synth_t* synth);
+//fluid_audio_driver_t* new_fluid_alsa_audio_driver2(fluid_settings_t* settings,
+//						 fluid_audio_func_t func, void* data);
+//void delete_fluid_alsa_audio_driver(fluid_audio_driver_t* p);
+//void fluid_alsa_audio_driver_settings(fluid_settings_t* settings);
+//#endif
+//
+//#if OSS_SUPPORT
+//fluid_audio_driver_t* new_fluid_oss_audio_driver(fluid_settings_t* settings,
+//						 fluid_synth_t* synth);
+//fluid_audio_driver_t* new_fluid_oss_audio_driver2(fluid_settings_t* settings,
+//						fluid_audio_func_t func, void* data);
+//void delete_fluid_oss_audio_driver(fluid_audio_driver_t* p);
+//void fluid_oss_audio_driver_settings(fluid_settings_t* settings);
+//#endif
+//
+//#if COREAUDIO_SUPPORT
+//fluid_audio_driver_t* new_fluid_core_audio_driver(fluid_settings_t* settings,
+//						  fluid_synth_t* synth);
+//fluid_audio_driver_t* new_fluid_core_audio_driver2(fluid_settings_t* settings,
+//						      fluid_audio_func_t func,
+//						      void* data);
+//void delete_fluid_core_audio_driver(fluid_audio_driver_t* p);
+//void fluid_core_audio_driver_settings(fluid_settings_t* settings);
+//#endif
+//
+//#if DSOUND_SUPPORT
+//fluid_audio_driver_t* new_fluid_dsound_audio_driver(fluid_settings_t* settings,
+//						  fluid_synth_t* synth);
+//void delete_fluid_dsound_audio_driver(fluid_audio_driver_t* p);
+//void fluid_dsound_audio_driver_settings(fluid_settings_t* settings);
+//#endif
+//
+//#if PORTAUDIO_SUPPORT
+//void fluid_portaudio_driver_settings (fluid_settings_t *settings);
+//fluid_audio_driver_t* new_fluid_portaudio_driver(fluid_settings_t* settings,
+//						 fluid_synth_t* synth);
+//void delete_fluid_portaudio_driver(fluid_audio_driver_t* p);
+//#endif
+//
+//#if JACK_SUPPORT
+//fluid_audio_driver_t* new_fluid_jack_audio_driver(fluid_settings_t* settings, fluid_synth_t* synth);
+//fluid_audio_driver_t* new_fluid_jack_audio_driver2(fluid_settings_t* settings,
+//						 fluid_audio_func_t func, void* data);
+//void delete_fluid_jack_audio_driver(fluid_audio_driver_t* p);
+//void fluid_jack_audio_driver_settings(fluid_settings_t* settings);
+//#endif
+//
+//#if SNDMAN_SUPPORT
+//fluid_audio_driver_t* new_fluid_sndmgr_audio_driver(fluid_settings_t* settings,
+//						  fluid_synth_t* synth);
+//fluid_audio_driver_t* new_fluid_sndmgr_audio_driver2(fluid_settings_t* settings,
+//						   fluid_audio_func_t func,
+//						   void* data);
+//void delete_fluid_sndmgr_audio_driver(fluid_audio_driver_t* p);
+//#endif
+//
+//#if DART_SUPPORT
+//fluid_audio_driver_t* new_fluid_dart_audio_driver(fluid_settings_t* settings,
+//                          fluid_synth_t* synth);
+//void delete_fluid_dart_audio_driver(fluid_audio_driver_t* p);
+//void fluid_dart_audio_driver_settings(fluid_settings_t* settings);
+//#endif
+//
+//#if AUFILE_SUPPORT
+//fluid_audio_driver_t* new_fluid_file_audio_driver(fluid_settings_t* settings,
+//						  fluid_synth_t* synth);
+//void delete_fluid_file_audio_driver(fluid_audio_driver_t* p);
+//#endif
 
 
 /* Available audio drivers, listed in order of preference */
 static const fluid_audriver_definition_t fluid_audio_drivers[] =
 {
-#if JACK_SUPPORT
-    { "jack",
-        new_fluid_jack_audio_driver,
-        new_fluid_jack_audio_driver2,
-        delete_fluid_jack_audio_driver,
-        fluid_jack_audio_driver_settings },
-#endif
+//#if JACK_SUPPORT
+//    { "jack",
+//        new_fluid_jack_audio_driver,
+//        new_fluid_jack_audio_driver2,
+//        delete_fluid_jack_audio_driver,
+//        fluid_jack_audio_driver_settings },
+//#endif
+//
+//#if ALSA_SUPPORT
+//    { "alsa",
+//        new_fluid_alsa_audio_driver,
+//        new_fluid_alsa_audio_driver2,
+//        delete_fluid_alsa_audio_driver,
+//        fluid_alsa_audio_driver_settings },
+//#endif
+//
+//#if OSS_SUPPORT
+//    { "oss",
+//        new_fluid_oss_audio_driver,
+//        new_fluid_oss_audio_driver2,
+//        delete_fluid_oss_audio_driver,
+//        fluid_oss_audio_driver_settings },
+//#endif
 
-#if ALSA_SUPPORT
-    { "alsa",
-        new_fluid_alsa_audio_driver,
-        new_fluid_alsa_audio_driver2,
-        delete_fluid_alsa_audio_driver,
-        fluid_alsa_audio_driver_settings },
-#endif
-
-#if OSS_SUPPORT
-    { "oss",
-        new_fluid_oss_audio_driver,
-        new_fluid_oss_audio_driver2,
-        delete_fluid_oss_audio_driver,
-        fluid_oss_audio_driver_settings },
-#endif
-
-#if PULSE_SUPPORT
-    { "pulseaudio",
-        new_fluid_pulse_audio_driver,
-        new_fluid_pulse_audio_driver2,
-        delete_fluid_pulse_audio_driver,
-        fluid_pulse_audio_driver_settings },
-#endif
-
-#if COREAUDIO_SUPPORT
-    { "coreaudio",
-        new_fluid_core_audio_driver,
-        new_fluid_core_audio_driver2,
-        delete_fluid_core_audio_driver,
-        fluid_core_audio_driver_settings },
-#endif
-
-#if DSOUND_SUPPORT
-    { "dsound",
-        new_fluid_dsound_audio_driver,
+//#if OPENSLES_SUPPORT
+    { "opensles",
+        new_fluid_opensles_audio_driver,
         NULL,
-        delete_fluid_dsound_audio_driver,
-        fluid_dsound_audio_driver_settings },
-#endif
+        delete_fluid_opensles_audio_driver,
+        fluid_opensles_audio_driver_settings },
+//#endif
 
-#if PORTAUDIO_SUPPORT
-    { "portaudio",
-        new_fluid_portaudio_driver,
-        NULL,
-        delete_fluid_portaudio_driver,
-        fluid_portaudio_driver_settings },
-#endif
-
-#if SNDMAN_SUPPORT
-    { "sndman",
-        new_fluid_sndmgr_audio_driver,
-        new_fluid_sndmgr_audio_driver2,
-        delete_fluid_sndmgr_audio_driver,
-        NULL },
-#endif
-
-#if DART_SUPPORT
-    { "dart",
-        new_fluid_dart_audio_driver,
-        NULL,
-        delete_fluid_dart_audio_driver,
-        fluid_dart_audio_driver_settings },
-#endif
-
-#if AUFILE_SUPPORT
-    { "file",
-        new_fluid_file_audio_driver,
-        NULL,
-        delete_fluid_file_audio_driver,
-        NULL },
-#endif
+//#if PULSE_SUPPORT
+//    { "pulseaudio",
+//        new_fluid_pulse_audio_driver,
+//        new_fluid_pulse_audio_driver2,
+//        delete_fluid_pulse_audio_driver,
+//        fluid_pulse_audio_driver_settings },
+//#endif
+//
+//#if COREAUDIO_SUPPORT
+//    { "coreaudio",
+//        new_fluid_core_audio_driver,
+//        new_fluid_core_audio_driver2,
+//        delete_fluid_core_audio_driver,
+//        fluid_core_audio_driver_settings },
+//#endif
+//
+//#if DSOUND_SUPPORT
+//    { "dsound",
+//        new_fluid_dsound_audio_driver,
+//        NULL,
+//        delete_fluid_dsound_audio_driver,
+//        fluid_dsound_audio_driver_settings },
+//#endif
+//
+//#if PORTAUDIO_SUPPORT
+//    { "portaudio",
+//        new_fluid_portaudio_driver,
+//        NULL,
+//        delete_fluid_portaudio_driver,
+//        fluid_portaudio_driver_settings },
+//#endif
+//
+//#if SNDMAN_SUPPORT
+//    { "sndman",
+//        new_fluid_sndmgr_audio_driver,
+//        new_fluid_sndmgr_audio_driver2,
+//        delete_fluid_sndmgr_audio_driver,
+//        NULL },
+//#endif
+//
+//#if DART_SUPPORT
+//    { "dart",
+//        new_fluid_dart_audio_driver,
+//        NULL,
+//        delete_fluid_dart_audio_driver,
+//        fluid_dart_audio_driver_settings },
+//#endif
+//
+//#if AUFILE_SUPPORT
+//    { "file",
+//        new_fluid_file_audio_driver,
+//        NULL,
+//        delete_fluid_file_audio_driver,
+//        NULL },
+//#endif
 };
 
 #define ENABLE_AUDIO_DRIVER(_drv, _idx) \
@@ -234,61 +249,66 @@ void fluid_audio_driver_settings(fluid_settings_t* settings)
                                FLUID_DEFAULT_AUDIO_RT_PRIO, 0, 99, 0);
 
   /* Set the default driver */
-#if JACK_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "jack", 0);
-#elif ALSA_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "alsa", 0);
-#elif PULSE_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "pulseaudio", 0);
-#elif OSS_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "oss", 0);
-#elif COREAUDIO_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "coreaudio", 0);
-#elif DSOUND_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "dsound", 0);
-#elif SNDMAN_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "sndman", 0);
-#elif PORTAUDIO_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "portaudio", 0);
-#elif DART_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "dart", 0);
-#elif AUFILE_SUPPORT
-  fluid_settings_register_str(settings, "audio.driver", "file", 0);
-#else
-  fluid_settings_register_str(settings, "audio.driver", "", 0);
-#endif
+//#if JACK_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "jack", 0);
+//#elif ALSA_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "alsa", 0);
+//#elif OPENSLES_SUPPORT
+  fluid_settings_register_str(settings, "audio.driver", "opensles", 0);
+//#elif PULSE_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "pulseaudio", 0);
+//#elif OSS_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "oss", 0);
+//#elif COREAUDIO_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "coreaudio", 0);
+//#elif DSOUND_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "dsound", 0);
+//#elif SNDMAN_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "sndman", 0);
+//#elif PORTAUDIO_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "portaudio", 0);
+//#elif DART_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "dart", 0);
+//#elif AUFILE_SUPPORT
+//  fluid_settings_register_str(settings, "audio.driver", "file", 0);
+//#else
+//  fluid_settings_register_str(settings, "audio.driver", "", 0);
+//#endif
 
   /* Add all drivers to the list of options */
-#if PULSE_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "pulseaudio");
-#endif
-#if ALSA_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "alsa");
-#endif
-#if OSS_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "oss");
-#endif
-#if COREAUDIO_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "coreaudio");
-#endif
-#if DSOUND_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "dsound");
-#endif
-#if SNDMAN_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "sndman");
-#endif
-#if PORTAUDIO_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "portaudio");
-#endif
-#if JACK_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "jack");
-#endif
-#if DART_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "dart");
-#endif
-#if AUFILE_SUPPORT
-  fluid_settings_add_option(settings, "audio.driver", "file");
-#endif
+//#if OPENSLES_SUPPORT
+  fluid_settings_add_option(settings, "audio.driver", "opensles");
+//#endif
+//#if PULSE_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "pulseaudio");
+//#endif
+//#if ALSA_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "alsa");
+//#endif
+//#if OSS_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "oss");
+//#endif
+//#if COREAUDIO_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "coreaudio");
+//#endif
+//#if DSOUND_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "dsound");
+//#endif
+//#if SNDMAN_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "sndman");
+//#endif
+//#if PORTAUDIO_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "portaudio");
+//#endif
+//#if JACK_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "jack");
+//#endif
+//#if DART_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "dart");
+//#endif
+//#if AUFILE_SUPPORT
+//  fluid_settings_add_option(settings, "audio.driver", "file");
+//#endif
 
   for (i = 0; i < FLUID_N_ELEMENTS(fluid_audio_drivers); i++) {
     if (fluid_audio_drivers[i].settings != NULL &&
