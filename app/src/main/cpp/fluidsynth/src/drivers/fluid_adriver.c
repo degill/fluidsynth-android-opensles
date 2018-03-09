@@ -40,7 +40,7 @@ typedef struct _fluid_audriver_definition_t
 //#if OPENSLES_SUPPORT
 fluid_audio_driver_t* new_fluid_opensles_audio_driver(fluid_settings_t* settings,
 						   fluid_synth_t* synth);
-int delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p);
+void delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p);
 void fluid_opensles_audio_driver_settings(fluid_settings_t* settings);
 //#endif
 

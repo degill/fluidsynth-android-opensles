@@ -88,7 +88,7 @@ void fluid_opensles_adjust_latency(fluid_opensles_audio_driver_t* dev);
 void fluid_opensles_audio_driver_settings(fluid_settings_t* settings)
 {
     fluid_settings_register_int(settings, "audio.opensles.use-callback-mode", 0, 0, 1,
-                                FLUID_HINT_TOGGLED, NULL, NULL);
+                                FLUID_HINT_TOGGLED);
 }
 
 
@@ -211,7 +211,7 @@ new_fluid_opensles_audio_driver2(fluid_settings_t* settings, fluid_audio_func_t 
         if (dev->float_buffer == NULL && dev->short_buffer == NULL)
         {
             FLUID_LOG(FLUID_ERR, "Out of memory.");
-            return;
+            return NULL;
         }
 
         if (dev->callback) {
@@ -223,7 +223,7 @@ new_fluid_opensles_audio_driver2(fluid_settings_t* settings, fluid_audio_func_t 
             if (dev->float_callback_buffer_l == NULL && dev->short_callback_buffer_l == NULL)
             {
                 FLUID_LOG(FLUID_ERR, "Out of memory.");
-                return;
+                return NULL;
             }
 
             if (dev->is_sample_format_float)
@@ -233,7 +233,7 @@ new_fluid_opensles_audio_driver2(fluid_settings_t* settings, fluid_audio_func_t 
             if (dev->float_callback_buffer_r == NULL && dev->short_callback_buffer_r == NULL)
             {
                 FLUID_LOG(FLUID_ERR, "Out of memory.");
-                return;
+                return NULL;
             }
         }
 
