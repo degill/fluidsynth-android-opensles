@@ -77,10 +77,9 @@ fluid_audio_driver_t* new_fluid_opensles_audio_driver(fluid_settings_t* settings
                                                       fluid_synth_t* synth);
 fluid_audio_driver_t* new_fluid_opensles_audio_driver2(fluid_settings_t* settings,
                                                        fluid_audio_func_t func, void* data);
-int delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p);
+void delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p);
 void fluid_opensles_audio_driver_settings(fluid_settings_t* settings);
-static void fluid_opensles_audio_run(void* d);
-static void fluid_opensles_audio_run2(void* d);
+static fluid_thread_return_t fluid_opensles_audio_run(void* d);
 static void fluid_opensles_callback(SLAndroidSimpleBufferQueueItf caller, void *pContext);
 void fluid_opensles_adjust_latency(fluid_opensles_audio_driver_t* dev);
 
@@ -270,12 +269,12 @@ new_fluid_opensles_audio_driver2(fluid_settings_t* settings, fluid_audio_func_t 
     return NULL;
 }
 
-int delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p)
+void delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p)
 {
     fluid_opensles_audio_driver_t* dev = (fluid_opensles_audio_driver_t*) p;
 
     if (dev == NULL) {
-        return FLUID_OK;
+        return;
     }
 
     dev->cont = 0;
@@ -312,7 +311,7 @@ int delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p)
 
     FLUID_FREE(dev);
 
-    return FLUID_OK;
+    return;
 }
 
 void fluid_opensles_adjust_latency(fluid_opensles_audio_driver_t* dev)
@@ -389,7 +388,7 @@ void fluid_opensles_callback(SLAndroidSimpleBufferQueueItf caller, void *pContex
 }
 
 /* Thread without audio callback, more efficient */
-static void
+static fluid_thread_return_t
 fluid_opensles_audio_run(void* d)
 {
     fluid_opensles_audio_driver_t* dev = (fluid_opensles_audio_driver_t*) d;
@@ -410,7 +409,7 @@ fluid_opensles_audio_run(void* d)
     if (short_buf == NULL && float_buf == NULL)
     {
         FLUID_LOG(FLUID_ERR, "Out of memory.");
-        return;
+        return NULL;
     }
 
     int cnt = 0;
@@ -441,4 +440,6 @@ fluid_opensles_audio_run(void* d)
         FLUID_FREE(float_buf);
     else
         FLUID_FREE(short_buf);
+
+    return FLUID_THREAD_RETURN_VALUE;
 }
