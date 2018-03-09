@@ -1,0 +1,18 @@
+# IDEA
+*.iml
+/.idea
+!/.idea/runConfigurations
+
+# Gradle
+.gradle
+build
+/reports
+
+# Gradle Android
+/local.properties
+/captures
+
+# OSX
+.DS_Store
+
+.externalNativeBuild
