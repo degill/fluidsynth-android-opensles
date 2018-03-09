@@ -13,5 +13,5 @@ To enable audio with fluidsynth on Android with the OpenSL ES audio framework [a
 
 ## Progress:
 * [X] Include VolcanoMobiles version of [fluidsynth](https://github.com/VolcanoMobile/fluidsynth-android)
-* [ ] Include atsushienos additions to fluidsynth to enable OpenSL ES support. His changes can be found in this [patch](https://gist.github.com/atsushieno/539e4e14d4eafcad724e446ad73dc1ad)
+* [X] Include atsushienos additions to fluidsynth to enable OpenSL ES support. His changes can be found in this [patch](https://gist.github.com/atsushieno/539e4e14d4eafcad724e446ad73dc1ad)
 * [ ] Be able to build the project again
