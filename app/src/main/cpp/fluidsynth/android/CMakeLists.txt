@@ -82,4 +82,4 @@ target_compile_options(fluidsynth
                             PRIVATE -Wno-unused-variable
                             PRIVATE "$<$<CONFIG:DEBUG>:-Werror>") # Only include -Werror when building debug config
 
-target_link_libraries (fluidsynth OpenSLES)
+target_link_libraries (fluidsynth OpenSLES log)

@@ -30,6 +30,10 @@
 #include "fluid_rtkit.h"
 #endif
 
+#ifdef ANDROID
+#include <android/log.h>
+#endif
+
 /* WIN32 HACK - Flag used to differentiate between a file descriptor and a socket.
  * Should work, so long as no SOCKET or file descriptor ends up with this bit set. - JG */
 #ifdef _WIN32
@@ -156,26 +160,50 @@ fluid_default_log_function(int level, char* message, void* data)
   }
 
   switch (level) {
-  case FLUID_PANIC:
-    FLUID_FPRINTF(out, "%s: panic: %s\n", fluid_libname, message);
-    break;
-  case FLUID_ERR:
-    FLUID_FPRINTF(out, "%s: error: %s\n", fluid_libname, message);
-    break;
-  case FLUID_WARN:
-    FLUID_FPRINTF(out, "%s: warning: %s\n", fluid_libname, message);
-    break;
-  case FLUID_INFO:
-    FLUID_FPRINTF(out, "%s: %s\n", fluid_libname, message);
-    break;
-  case FLUID_DBG:
-#if DEBUG
-    FLUID_FPRINTF(out, "%s: debug: %s\n", fluid_libname, message);
-#endif
-    break;
-  default:
-    FLUID_FPRINTF(out, "%s: %s\n", fluid_libname, message);
-    break;
+    case FLUID_PANIC:
+      #ifdef ANDROID
+        __android_log_write(ANDROID_LOG_FATAL, fluid_libname, message);
+      #else
+        FLUID_FPRINTF(out, "%s: panic: %s\n", fluid_libname, message);
+      #endif
+      break;
+    case FLUID_ERR:
+      #ifdef ANDROID
+        __android_log_write(ANDROID_LOG_ERROR, fluid_libname, message);
+      #else
+        FLUID_FPRINTF(out, "%s: error: %s\n", fluid_libname, message);
+      #endif
+      break;
+    case FLUID_WARN:
+      #ifdef ANDROID
+       __android_log_write(ANDROID_LOG_WARN, fluid_libname, message);
+      #else
+        FLUID_FPRINTF(out, "%s: warning: %s\n", fluid_libname, message);
+      #endif
+      break;
+    case FLUID_INFO:
+      #ifdef ANDROID
+        __android_log_write(ANDROID_LOG_INFO, fluid_libname, message);
+      #else
+        FLUID_FPRINTF(out, "%s: %s\n", fluid_libname, message);
+      #endif
+      break;
+    case FLUID_DBG:
+      #if DEBUG
+        #ifdef ANDROID
+          __android_log_write(ANDROID_LOG_DEBUG, fluid_libname, message);
+        #else
+          FLUID_FPRINTF(out, "%s: debug: %s\n", fluid_libname, message);
+        #endif
+      #endif
+      break;
+    default:
+      #ifdef ANDROID
+        __android_log_write(ANDROID_LOG_VERBOSE, fluid_libname, message);
+      #else
+        FLUID_FPRINTF(out, "%s: %s\n", fluid_libname, message);
+      #endif
+      break;
   }
   fflush(out);
 }
@@ -361,16 +389,16 @@ fluid_is_soundfont(const char *filename)
     return 0;
   }
   if((fread((void*) riff_id, 1, sizeof(riff_id), fp) != sizeof(riff_id)) ||
-     (fseek(fp, 4, SEEK_CUR) != 0) || 
+     (fseek(fp, 4, SEEK_CUR) != 0) ||
      (fread((void*) sfbk_id, 1, sizeof(sfbk_id), fp) != sizeof(sfbk_id)))
   {
       goto error_rec;
   }
-  
+
   fclose(fp);
   return (FLUID_STRNCMP(riff_id, "RIFF", sizeof(riff_id)) == 0) &&
          (FLUID_STRNCMP(sfbk_id, "sfbk", sizeof(sfbk_id)) == 0);
-  
+
 error_rec:
     fclose(fp);
     return 0;
@@ -661,7 +689,7 @@ delete_fluid_timer (fluid_timer_t *timer)
 {
   int auto_destroy;
   fluid_return_if_fail(timer != NULL);
-  
+
   auto_destroy = timer->auto_destroy;
 
   timer->cont = 0;
@@ -796,7 +824,7 @@ fluid_ostream_printf (fluid_ostream_t out, const char* format, ...)
   }
 
   buf[4095] = 0;
-  
+
   return write (out, buf, strlen (buf));
 }
 
