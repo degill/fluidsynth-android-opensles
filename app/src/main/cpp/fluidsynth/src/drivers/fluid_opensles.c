@@ -79,7 +79,7 @@ fluid_audio_driver_t* new_fluid_opensles_audio_driver2(fluid_settings_t* setting
                                                        fluid_audio_func_t func, void* data);
 void delete_fluid_opensles_audio_driver(fluid_audio_driver_t* p);
 void fluid_opensles_audio_driver_settings(fluid_settings_t* settings);
-static fluid_thread_return_t fluid_opensles_audio_run(void* d);
+static void* fluid_opensles_audio_run(void* d);
 static void fluid_opensles_callback(SLAndroidSimpleBufferQueueItf caller, void *pContext);
 void fluid_opensles_adjust_latency(fluid_opensles_audio_driver_t* dev);
 
@@ -388,7 +388,7 @@ void fluid_opensles_callback(SLAndroidSimpleBufferQueueItf caller, void *pContex
 }
 
 /* Thread without audio callback, more efficient */
-static fluid_thread_return_t
+static void*
 fluid_opensles_audio_run(void* d)
 {
     fluid_opensles_audio_driver_t* dev = (fluid_opensles_audio_driver_t*) d;

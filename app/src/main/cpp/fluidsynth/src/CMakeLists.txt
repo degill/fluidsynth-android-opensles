@@ -83,6 +83,10 @@ if ( WINDOWS_SUPPORT )
   set ( fluid_windows_SOURCES drivers/fluid_dsound.c drivers/fluid_winmidi.c )
 endif ( WINDOWS_SUPPORT )
 
+if ( OPENSLES_SUPPORT )
+  set ( fluid_opensles_SOURCES drivers/fluid_opensles.c )
+endif ( OPENSLES_SUPPORT )
+
 if ( OSS_SUPPORT )
   set ( fluid_oss_SOURCES drivers/fluid_oss.c )
 endif ( OSS_SUPPORT )
@@ -244,6 +248,8 @@ link_directories (
     ${LIBSNDFILE_LIBRARY_DIRS}
     ${DBUS_LIBDIR}
     ${DBUS_LIBRARY_DIRS}
+    ${OPENSLES_LIBDIR}
+    ${OPENSLES_LIBRARY_DIRS}
 )
 
 
@@ -259,6 +265,7 @@ add_library ( libfluidsynth
     ${fluid_jack_SOURCES}
     ${fluid_lash_SOURCES}
     ${fluid_midishare_SOURCES}
+    ${fluid_opensles_SOURCES}
     ${fluid_oss_SOURCES}
     ${fluid_portaudio_SOURCES}
     ${fluid_pulse_SOURCES}
@@ -326,6 +333,7 @@ target_link_libraries ( libfluidsynth
     ${PULSE_LIBRARIES}
     ${PORTAUDIO_LIBRARIES}
     ${LIBSNDFILE_LIBRARIES}
+    ${OPENSLES_LIBRARIES}
     ${DBUS_LIBRARIES}
     ${READLINE_LIBS}
     ${DART_LIBS}

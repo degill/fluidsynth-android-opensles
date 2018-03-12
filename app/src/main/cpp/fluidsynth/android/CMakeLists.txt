@@ -37,7 +37,6 @@ set(fluidsynth_sources
         ${src_DIR}/drivers/fluid_opensles.c
         ${src_DIR}/utils/fluid_sys.c
         src/bindings/fluid_cmd.c
-        src/drivers/fluid_adriver.c
         src/drivers/fluid_mdriver.c
 )
 
@@ -82,3 +81,5 @@ target_compile_options(fluidsynth
                             PRIVATE -DHAVE_CONFIG_H
                             PRIVATE -Wno-unused-variable
                             PRIVATE "$<$<CONFIG:DEBUG>:-Werror>") # Only include -Werror when building debug config
+
+target_link_libraries (fluidsynth OpenSLES)

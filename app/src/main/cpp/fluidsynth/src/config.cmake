@@ -160,6 +160,9 @@
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 #cmakedefine NO_MINUS_C_MINUS_O @NO_MINUS_C_MINUS_O@
 
+/* Define to enable OpenSLES driver */
+#cmakedefine OPENSLES_SUPPORT @OPENSLES_SUPPORT@
+
 /* Define to enable OSS driver */
 #cmakedefine OSS_SUPPORT @OSS_SUPPORT@
 
