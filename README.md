@@ -10,6 +10,9 @@ I set up a fresh Android project via AndroidStudio, simply copied over all relev
 
 To enable audio with fluidsynth on Android with the OpenSL ES audio framework [atsushieno](https://github.com/atsushieno) made independent changes to fluidsynth in his own fluidsynth [fork](https://github.com/atsushieno/fluidsynth). I was not able to build that project. But, since I was able to build VolcanoMobiles version of fluidsynth I thought it might be possible to only include atsushienos changes into VolcanoMobiles version. This project tries to do exactly that.
 
+**NOTE**:
+I know that this project currently scrambles fluidsynth library code with sample app code. I wanted to extract the fluidsynth part into it's own gradle-module library inside this project and have another module (i.e. the android sample app) with it's own native code use that library. But I couldn't get it to work. The native code inside the sample app then couldn't find the headers provided by the fluidsynth library. Any ideas are welcome.
+
 
 ## Progress:
 * [X] Include VolcanoMobiles version of [fluidsynth](https://github.com/VolcanoMobile/fluidsynth-android)
