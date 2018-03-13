@@ -38,6 +38,7 @@ set(fluidsynth_sources
         ${src_DIR}/utils/fluid_sys.c
         src/bindings/fluid_cmd.c
         src/drivers/fluid_mdriver.c
+        ../../native-lib.cpp # This line needs to be removed; It's only for testing purposes
 )
 
 set ( public_main_HEADER
