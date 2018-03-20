@@ -19,6 +19,7 @@ I know that this project currently scrambles fluidsynth library code with sample
 * [X] Include atsushienos additions to fluidsynth to enable OpenSL ES support. His changes can be found in this [patch](https://gist.github.com/atsushieno/539e4e14d4eafcad724e446ad73dc1ad)
 * [X] Be able to build the project again. Update: It now builds with changes taken from [here](https://github.com/atsushieno/fluidsynth/issues/8#issuecomment-371875875) and [here](https://gist.github.com/atsushieno/950eb50626e0009d5e919588a0ca9ef9).
 * [ ] Extract the fluidsynth part into its own gradle-module and have a sample app reference it
+* [ ] Fix `W/libOpenSLES: Leaving BufferQueue::Enqueue (SL_RESULT_BUFFER_INSUFFICIENT)`. After a while the output stumbles and logcat is filled with this log statement.
 
 ## Acknowledgements
 - [FluidSynth](https://github.com/FluidSynth/) for open sourcing [fluidsynth](https://github.com/FluidSynth/fluidsynth)
