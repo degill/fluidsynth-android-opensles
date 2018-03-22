@@ -10,7 +10,12 @@ JNIEXPORT void JNICALL Java_opensles_android_fluidsynth_fluidsynth_1android_1ope
         JNIEnv *env,
         jobject /* this */,
         jstring sf2path) {
+    // Init settings
     settings = new_fluid_settings();
+    fluid_settings_setstr(settings, "audio.driver", "opensles");
+    fluid_settings_setint(settings, "audio.opensles.use-callback-mode", 1);
+    fluid_settings_setint(settings, "audio.period-size", 64);
+
     synth = new_fluid_synth(settings);
 
     // Init soundfont
@@ -18,7 +23,6 @@ JNIEXPORT void JNICALL Java_opensles_android_fluidsynth_fluidsynth_1android_1ope
     fluid_synth_sfload(synth, nativeSf2Path, true);
     env->ReleaseStringUTFChars(sf2path, nativeSf2Path);
 
-    fluid_settings_setstr(settings, "audio.driver", "opensles");
     adriver = new_fluid_audio_driver(settings, synth);
 }
 
