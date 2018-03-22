@@ -326,7 +326,7 @@ void fluid_opensles_adjust_latency(fluid_opensles_audio_driver_t* dev)
     current_time = ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
     long time_delta = dev->next_expected_enqueue_time == 0 ? 0 : dev->next_expected_enqueue_time - current_time;
     if (time_delta == 0)
-        dev->next_expected_enqueue_time += current_time + wait_in_theory;
+        dev->next_expected_enqueue_time = current_time + wait_in_theory;
     else
         dev->next_expected_enqueue_time += wait_in_theory;
     /* take some sleep only if it's running ahead */
