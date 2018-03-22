@@ -348,8 +348,6 @@ void fluid_opensles_callback(SLAndroidSimpleBufferQueueItf caller, void *pContex
 
     buffer_size = dev->buffer_size;
 
-    fluid_opensles_adjust_latency(dev);
-
     if (dev->callback)
     {
         if (dev->is_sample_format_float) {
