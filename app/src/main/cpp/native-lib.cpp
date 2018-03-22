@@ -40,6 +40,15 @@ JNIEXPORT void JNICALL Java_opensles_android_fluidsynth_fluidsynth_1android_1ope
 }
 
 extern "C"
+JNIEXPORT jboolean JNICALL Java_opensles_android_fluidsynth_fluidsynth_1android_1opensles_NativeLibJNI_programChange(
+        JNIEnv *env,
+        jobject /* this */,
+        jint channel,
+        jint programNumber) {
+    return (jboolean) (FLUID_OK == fluid_synth_program_change(synth, (int) channel, (int) programNumber));
+}
+
+extern "C"
 JNIEXPORT void JNICALL Java_opensles_android_fluidsynth_fluidsynth_1android_1opensles_NativeLibJNI_destroy(
         JNIEnv *env,
         jobject /* this */) {
